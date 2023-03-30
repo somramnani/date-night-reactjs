@@ -17,12 +17,17 @@ function App() {
     console.log(input);
   };
 
+  const clear = (event) => {
+    setInput("");
+  };
+
   return (
     <div className="App">
       <Searchbar
         input={input}
         handleOnChange={handleOnChange}
         handleOnSubmit={handleOnSubmit}
+        clear={clear}
       />
     </div>
   );

@@ -16,8 +16,7 @@ app.get("/cors/:data", async (req, res) => {
     method: "get",
     url: `https://api.yelp.com/v3/businesses/search?location=${req.params.data}&categories=restaurants&limit=50`,
     headers: {
-      Authorization:
-        "Bearer t915wybDO3WP4B26tfMQd3AfvQQNFnODtP3EvVzYdhWW58RNwjSwA6OEt2mFI4zaWOwMFHgEr9Pzf3sXFiR_VooC8dfCEBqMR2MtifV8r-JEgaDpoOdQ9RcRE4sjXXYx",
+      Authorization: `Bearer ${process.env.YELP_API_KEY}`,
     },
   })
     .then((response) => {

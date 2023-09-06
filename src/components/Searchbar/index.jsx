@@ -3,7 +3,7 @@ import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
-// import styles from "./styles"
+import "./styles.css";
 
 export default function Searchbar({
   input,
@@ -12,14 +12,7 @@ export default function Searchbar({
   clear,
 }) {
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "100%",
-      }}
-    >
+    <div className="searchbar">
       <Stack spacing={2} direction="row" style={{ paddingBottom: "20px" }}>
         <TextField
           value={input}

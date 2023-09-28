@@ -1,18 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import "./App.css";
 import Searchbar from "./components/Searchbar";
-import axios from "axios";
+import Cards from "./components/Cards";
+
+/*
+TODO
+center the cards
+  - grid
+edit location name
+update share and learn more buttons
+*/
 
 function App() {
   const [input, setInput] = useState("");
+  const [yelpData, setYelpData] = useState([]);
 
   const getData = () => {
     axios({
       method: "get",
-      //TODO change to live link
+      //TODO change to live link for deployment
       url: `http://localhost:8080/cors/${encodeURI(input)}`,
     }).then(function (response) {
       console.log(response.data);
+      setYelpData(response.data.businesses);
     });
   };
 
@@ -28,9 +39,13 @@ function App() {
     console.log(input);
   };
 
-  const clear = (event) => {
+  const clear = () => {
     setInput("");
   };
+
+  useEffect(() => {
+    console.log("THIS IS YELP DATA", yelpData);
+  });
 
   return (
     <div className="App">
@@ -40,6 +55,18 @@ function App() {
         handleOnSubmit={handleOnSubmit}
         clear={clear}
       />
+
+      <div className="container">
+        {yelpData.map((data) => {
+          return (
+            <div className="container">
+              <div className="col">
+                <Cards className="cards" data={data} />
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

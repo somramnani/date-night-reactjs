@@ -15,7 +15,7 @@ app.get("/cors/:data", async (req, res) => {
   //api request
   await axios({
     method: "get",
-    url: `https://api.yelp.com/v3/businesses/search?location=${req.params.data}&categories=restaurants&limit=50`,
+    url: `https://api.yelp.com/v3/businesses/search?location=${req.params.data}&categories=restaurants&limit=20`,
     headers: {
       Authorization: `Bearer ${process.env.YELP_API_KEY}`,
     },

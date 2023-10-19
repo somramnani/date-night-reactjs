@@ -3,6 +3,7 @@ import axios from "axios";
 import "./App.css";
 import Searchbar from "./components/Searchbar";
 import Cards from "./components/Cards";
+import Navbar from "./components/Navbar";
 
 /*
 TODO
@@ -49,6 +50,7 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar />
       <Searchbar
         input={input}
         handleOnChange={handleOnChange}
